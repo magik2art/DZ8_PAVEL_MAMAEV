@@ -5,7 +5,8 @@ def type_logger(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         val = func(*args, **kwargs)
-        if val > 1:
+        minimum = 1 # Минимально допустимое число, ниже которого программа выдаст ошибку
+        if val > minimum:
             print(f'{val}')
         else:
             try:
@@ -22,5 +23,5 @@ def calc_cube(x):
     return x ** 3
 
 
-test_right = calc_cube(5)
-test_wrong = calc_cube(-5)
+test_right = calc_cube(5) # тестим если аргумент верный
+test_wrong = calc_cube(-5) # тестим если аргумент ОШИБОЧНЫЙ
